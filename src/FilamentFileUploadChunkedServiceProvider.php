@@ -9,18 +9,14 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class FilamentFileUploadChunkedServiceProvider extends PackageServiceProvider
 {
+    protected array $scripts = [
+        'file-upload-chunked' => __DIR__.'/../dist/file-upload-chunked.js',
+    ];
 
     public function configurePackage(Package $package): void
     {
         $package
             ->name('filament-file-upload-chunked')
             ->hasViews();
-    }
-
-    public function packageBooted()
-    {
-        FilamentAsset::register([
-            AlpineComponent::make('file-upload-chunked',  __DIR__ . '/../dist/file-upload-chunked.js'),
-        ], 'owainjones74/filament-file-upload-chunked');
     }
 }
